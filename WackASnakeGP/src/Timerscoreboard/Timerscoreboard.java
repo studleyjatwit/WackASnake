@@ -10,6 +10,7 @@ public class Timerscoreboard {
 
 	@SuppressWarnings("serial")
 	public class TimerScoreboard extends JFrame {
+		
 		private int score = 0;
 	    private int timeLeft = 60;
 	    private JLabel scoreLabel;
