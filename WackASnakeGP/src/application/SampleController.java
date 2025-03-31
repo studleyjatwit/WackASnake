@@ -16,13 +16,13 @@ import javafx.scene.Parent;
 		private Scene scene;
 		private Parent root;
 		
-		public void switchToScene2(ActionEvent event) throws IOException {
-		Pane root = (Pane)FXMLLoader.load(getClass().getResource("Scene2.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-		}
+		public void switchToScene2(ActionEvent event) throws Exception {
+			Pane root = (Pane)FXMLLoader.load(getClass().getResource("Scene2.fxml"));
+			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+	    }
 		
 		public void youWin(ActionEvent event) throws IOException {
 		Pane root = (Pane)FXMLLoader.load(getClass().getResource("SceneWin.fxml"));
@@ -42,3 +42,5 @@ import javafx.scene.Parent;
 		
 
 }
+		
+		
