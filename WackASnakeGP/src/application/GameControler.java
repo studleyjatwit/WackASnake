@@ -3,7 +3,7 @@ package application;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-
+import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
