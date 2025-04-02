@@ -28,6 +28,7 @@ public class GameControler {
 	private Label gameScore;
 	@FXML
 	private Button Gameplay;
+	private Label gameLevel;
 	@FXML
 	public Circle snake = new Circle(200,200,30, Color.RED);
 	
@@ -65,6 +66,23 @@ public class GameControler {
 //		snake.setCenterY(snake.getCenterX()+10);
 
 	}
+	public void bunnyclicked() {
+		Score--;
+		gameScore.setText(String.valueOf(Score));
+		
+//		snake.setCenterX(snake.getCenterY()+10);
+//		snake.setCenterY(snake.getCenterX()+10);
+
+	}
+	public void carrotclicked() {
+		Score = Score + 2;
+		gameScore.setText(String.valueOf(Score));
+		
+//		snake.setCenterX(snake.getCenterY()+10);
+//		snake.setCenterY(snake.getCenterX()+10);
+	}
+	
+		
 
 	public void startRandomSnakeMovement() {
 		
