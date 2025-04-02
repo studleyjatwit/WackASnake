@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameControler">
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -15,7 +15,7 @@
       </ImageView>
       <StackPane layoutX="240.0" layoutY="122.0" prefHeight="150.0" prefWidth="200.0">
          <children>
-            <Button fx:id="buton1" mnemonicParsing="false" onAction="#switchToScene2" opacity="0.0" prefHeight="97.0" prefWidth="194.0" text="Button" />
+            <Button fx:id="buton1" mnemonicParsing="false" onAction="#switchToScene2" onMouseClicked="#startGame" opacity="0.0" prefHeight="97.0" prefWidth="194.0" text="Button" />
          </children>
       </StackPane>
    </children>
