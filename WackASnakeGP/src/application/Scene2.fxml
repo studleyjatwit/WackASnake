@@ -8,6 +8,6 @@
    <children>
       <Label fx:id="gameTime" layoutX="207.0" layoutY="14.0" text="Timer" />
       <Label fx:id="gameScore" layoutX="286.0" layoutY="14.0" text="Score" />
-      <Circle fx:id="snake" centerX="200.0" centerY="200.0" fill="DODGERBLUE" onMouseClicked="#snakeclicked" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="snake" fill="DODGERBLUE" layoutX="200.0" layoutY="200.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </Pane>
