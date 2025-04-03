@@ -47,7 +47,7 @@ public class GameControler {
 	private Scene scene;
 	private static final int RADIUS = 30; // Circle size
 	
-	private Timer timer;
+	//private Timer timer;
 	public Random random = new Random();
 
 	public void switchToScene2(ActionEvent event) throws Exception {
@@ -148,27 +148,7 @@ public class GameControler {
 
 	        // Schedule the task to run every second (1000ms)
 	        timer.scheduleAtFixedRate(task, 0, 1000);  // Every second
-	    }
-	   
-	   public void timer() {
-		   
-	   
-	   int remainingTime = 10000; //10 seconds 
-       
-
-       timer = new Timer();
-       timer.scheduleAtFixedRate(new TimerTask() {
-           public void run() {
-               if (remainingTime > 0) {
-                   System.out.println("Time remaining: " + remainingTime + " seconds");
-                   remainingTime--;
-               } else {
-                   System.out.println("Time's up!");
-                   timer.cancel();
-               }
-           }
-       }, 0, 1000); // Schedule the task to run every 1000 milliseconds (1 second)
-   }
+	   }
 	   
 	   
 	   

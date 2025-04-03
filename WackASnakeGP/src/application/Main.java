@@ -1,5 +1,5 @@
 package application;
-	
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,23 +26,23 @@ public class Main extends Application {
 
 		 new GameControler();
 		try {
-			
+
 			Pane root = (Pane)FXMLLoader.load(getClass().getResource("Scene1.fxml"));
 			Scene scene = new Scene(root);
 			StageOne.setScene(scene);
 
 			StageOne.show();
-			
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
 
 
-	
+
+
 	public static void main(String[] args) {
-		
+
 		launch(args);
 	}
 }
