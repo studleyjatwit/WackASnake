@@ -117,6 +117,10 @@ public class GameControler {
 	        // Schedule the task to run every second (1000ms)
 	        timer.scheduleAtFixedRate(task, 0, 1000);  // Every second
 	    }
+	   
+	   
+	   
+	   
 }
 
 	          
