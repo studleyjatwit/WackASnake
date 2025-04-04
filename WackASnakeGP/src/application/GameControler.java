@@ -1,5 +1,7 @@
 package application;
 
+import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.Random;
 
 import java.util.Timer;
@@ -10,7 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -35,11 +37,16 @@ public class GameControler {
 	@FXML
 	private Label gameLevel;
 	@FXML
-	//public ImageView snake;
+	private ImageView snake;
+	@FXML
+	private ImageView bunny;
 	
-	private Circle snake = new Circle(200,200,30, Color.RED);
+	//private Circle snake = new Circle(200,200,30, Color.RED);
 	private static final int WIDTH = 500;  // Screen width
 	private static final int HEIGHT = 400; // Screen height
+	public int MAX_X = 500;
+	public int MAX_Y = 400;
+	
 	//timer things 
     private static int remainingTime;
     private static Timer timer;
@@ -64,18 +71,35 @@ public class GameControler {
 		
 	}
 
+
+//		public void WIN(String fxmlFile, Stage stage) {
+//	        try {
+//	            Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
+//	            Scene scene = new Scene(root);
+//	            stage.setScene(scene);
+//	            stage.show();
+//	        } catch (IOException e) {
+//	            e.printStackTrace();
+//	        }
+	
+//	}
+
 	public void startGame() {
 //		
 //		snake.setLayoutX(150);
 //		snake.setLayoutY(150);
 		System.out.println("staring Game");
 		
+		
 	}
 
-	public void snakeclicked() {
+	public void snakeclicked() throws Exception {
 		Score++;
-		
-		startRandomMovement();
+		if (Score >=5 ) {
+			WIN("WIN.fxml", stage);
+		}
+	
+		startRandomMovement(snake);
 		gameScore.setText(String.valueOf(Score));
 		
 //		snake.setCenterX(snake.getCenterY()+10);
@@ -84,89 +108,150 @@ public class GameControler {
 	}
 	public void bunnyclicked() {
 		Score--;
-		startRandomBunnyMovement();
+		startRandomBunnyMovement(bunny);
 		gameScore.setText(String.valueOf(Score));
 		
 //		snake.setCenterX(snake.getCenterY()+10);
 //		snake.setCenterY(snake.getCenterX()+10);
 
 	}
-	public void carrotclicked() {
-		Score = Score + 2;
-		startRandomCarrotMovement();
-		gameScore.setText(String.valueOf(Score));
-		
-//		snake.setCenterX(snake.getCenterY()+10);
-//		snake.setCenterY(snake.getCenterX()+10);
-	}
-	
+//	public void carrotclicked() {
+//		Score = Score + 2;
+//		startRandomCarrotMovement();
+//		gameScore.setText(String.valueOf(Score));
+//		
+////		snake.setCenterX(snake.getCenterY()+10);
+////		snake.setCenterY(snake.getCenterX()+10);
+//	}
+//	
 		
 
-	public void startRandomMovement() {
+	public void startRandomMovement(ImageView type) {
 		System.out.println("Starting Movements");
 		
         Random random = new Random();
 	
-        int randomPos = random.nextInt(2);
+        int randomPos = random.nextInt(4);
 		
 		if (randomPos == 0) {
-			 setCirclePosition( 100, 100 );
+			 setPosition( 151, 121 );
+			 
 		}
 		if (randomPos == 1) {
-			 setCirclePosition( 200, 100 );
+			 setPosition( 394, 242 );
 			
 		}
 		else if (randomPos == 2) {
-			 setCirclePosition( 100, 400 );
+			 setPosition( 394, 121 );
 			
 		}
 		else if (randomPos == 3) {
-			 setCirclePosition( 400, 100 );
+			 setPosition( 151, 121 );
 			
 		}
-		
+		else if (randomPos == 4) {
+			 setPosition( 275, 171 );
+			
+		}
+		else 
+			setPosition( 100, 100 );
 		
 			}
 	
-	 public void  setCirclePosition( int x, int y ) {
-			snake.setCenterX(x);
-			snake.setCenterY(y);
+	 public void  setPosition( int x, int y ) {
+			snake.setLayoutX(x);
+			snake.setLayoutY(y);
 			
 		}
-	public void startRandomBunnyMovement() {
+	public void startRandomBunnyMovement(ImageView type) {
 		System.out.println("Starting bunny  Movements");
+        Random random = new Random();
+    	
+        int randomPos = random.nextInt(4);
 		
-		
-		
+		if (randomPos == 0) {
+			 setPosition( 100, 100 );
+			 
+		}
+		if (randomPos == 1) {
+			 setPosition( 200, 100 );
+			
+		}
+		else if (randomPos == 2) {
+			 setPosition( 100, 400 );
+			
+		}
+		else if (randomPos == 3) {
+			 setPosition( 400, 100 );
+			
+		}
+
 		
 //		startTimer();
-		
-		
+	
 			}
-	public void startRandomCarrotMovement() {
-		System.out.println("Starting carrot  Movements");
-		
-		
-		
-		
-//		startTimer();
-		
-		
-			}
+
 	
 //Could have a bunch of circles and Then Show and HIde depending on random POsition value. 
 	
+	//Jollys TImer 
 
+		private int score = 0;
+	    private int timeLeft = 60;
+	    private JLabel scoreLabel;
+	    private JLabel timerLabel;
+	    private Timer timer;
+
+	    public void TimerScoreboard() {
+	        setTitle("Timer and Scoreboard");
+	        setSize(300, 200);
+	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        setLayout(new GridLayout(3, 1));
+	        scoreLabel = new JLabel("Score: " + score, SwingConstants.CENTER);
+	        timerLabel = new JLabel("Time left: " + timeLeft + "s", SwingConstants.CENTER);
+
+	        JButton increaseScoreButton = new JButton("Increase Score");
+	        increaseScoreButton.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                score++;
+	                scoreLabel.setText("Score: " + score);
+	            }
+	        });
+
+	        add(scoreLabel);
+	        add(timerLabel);
+	        add(increaseScoreButton);
+	        timer = new Timer(1000, new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                if (timeLeft > 0) {
+	                    timeLeft--;
+	                    timerLabel.setText("Time left: " + timeLeft + "s");
+	                } else {
+	                    timer.stop();
+	                    JOptionPane.showMessageDialog(null, "Time's up! Final Score: " + score);
+	                }
+	            }
+	        });
+	       timer.start();
+	       
+	    }
+	    public static void main(String[] args) {
+	    	SwingUtilities.invokeLater(new Runnable() {
+	            public void run() {
+	                //new TimerScoreboard().setVisible(true);
+	    }
+	    	
+	    });
+	    	
+	   } 
+	}
 //	   public void startTimer() {
-//		   
-//		   
-//		   
-//
+//	
 //		   System.out.println("Timer starting");
 //	
-//	  
-//	   // working on fixing random popup 
-//		   //Multiple curcles with positions stable and changing visibility pers second not location 
+//
 //	   
 //	   
 //	        Timer timer = new Timer();
@@ -177,8 +262,8 @@ public class GameControler {
 //	            
 //	                // Randomly choose one of the two positions (200, 200) or (400, 200)
 //	            	System.out.print ("time passed ");
-//	            	System.out.println("snake y posititon= "+ snake.getCenterY());
-//	                int randomPos = random.nextInt(2);
+//	            	System.out.println("snake y posititon= "+ snake.getLayoutY());
+//	                int randomPos = random.nextInt(4);
 //	                
 //	                System.out.println(randomPos);
 //	                
@@ -187,7 +272,7 @@ public class GameControler {
 //	                	
 //	                	if (randomPos == 0) {
 //	                    	
-//	                    	snake.setCenterY(200);
+//	                    	snake.setLayoutY(200);
 //	       
 //	                    	
 //	                    	System.out.println(" random = 0");
@@ -215,8 +300,8 @@ public class GameControler {
 //	        timer.scheduleAtFixedRate(task, 0, 1000);  // Every second
 //	   }
 //	   
-	   
-	   
-	   
-}
+//	   
+//	   
+//	   
+//}
 
