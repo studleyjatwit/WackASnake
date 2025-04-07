@@ -49,7 +49,12 @@ public class GameControler {
 	
 	//timer things 
     private static int remainingTime;
-    private static Timer timer;
+    private Timer timer;
+    private int score = 0;
+    private int timeLeft = 60;
+    
+    
+    
     
 	private int Score = 0;
 	private int lvl =  1; 
@@ -70,6 +75,22 @@ public class GameControler {
 		startGame();
 		
 	}
+	
+//	public void GameTimer() {
+//		  timer = new Timer(1000, new ActionListener()) {
+//			  
+//	            public void actionPerformed(ActionEvent e) {
+//	                if (timeLeft > 0) {
+//	                    timeLeft--;
+//	                    gameTime.setText("timeLeft ");
+//	                } else {
+//	                    timer.stop();
+//	                    
+//	                }
+//	            }
+//	        };
+//	
+//	}
 
 
 //		public void WIN(String fxmlFile, Stage stage) {
@@ -96,11 +117,13 @@ public class GameControler {
 	public void snakeclicked() throws Exception {
 		Score++;
 		if (Score >=5 ) {
-			WIN("WIN.fxml", stage);
+	
+	
+			
 		}
 	
 		startRandomMovement(snake);
-		gameScore.setText(String.valueOf(Score));
+		gameScore.setText( "Score: " + String.valueOf(Score));
 		
 //		snake.setCenterX(snake.getCenterY()+10);
 //		snake.setCenterY(snake.getCenterX()+10);
@@ -128,6 +151,7 @@ public class GameControler {
 
 	public void startRandomMovement(ImageView type) {
 		System.out.println("Starting Movements");
+		
 		
         Random random = new Random();
 	
@@ -163,6 +187,11 @@ public class GameControler {
 			snake.setLayoutY(y);
 			
 		}
+	 public void  setBunnyPosition( int x, int y ) {
+			bunny.setLayoutX(x);
+			bunny.setLayoutY(y);
+			
+		}
 	public void startRandomBunnyMovement(ImageView type) {
 		System.out.println("Starting bunny  Movements");
         Random random = new Random();
@@ -185,68 +214,16 @@ public class GameControler {
 			 setPosition( 400, 100 );
 			
 		}
+	}
+}
 
 		
-//		startTimer();
-	
-			}
-
-	
+////		startTimer();
+//	
+////			}
+//
+//	
 //Could have a bunch of circles and Then Show and HIde depending on random POsition value. 
-	
-	//Jollys TImer 
-
-		private int score = 0;
-	    private int timeLeft = 60;
-	    private JLabel scoreLabel;
-	    private JLabel timerLabel;
-	    private Timer timer;
-
-	    public void TimerScoreboard() {
-	        setTitle("Timer and Scoreboard");
-	        setSize(300, 200);
-	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        setLayout(new GridLayout(3, 1));
-	        scoreLabel = new JLabel("Score: " + score, SwingConstants.CENTER);
-	        timerLabel = new JLabel("Time left: " + timeLeft + "s", SwingConstants.CENTER);
-
-	        JButton increaseScoreButton = new JButton("Increase Score");
-	        increaseScoreButton.addActionListener(new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent e) {
-	                score++;
-	                scoreLabel.setText("Score: " + score);
-	            }
-	        });
-
-	        add(scoreLabel);
-	        add(timerLabel);
-	        add(increaseScoreButton);
-	        timer = new Timer(1000, new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent e) {
-	                if (timeLeft > 0) {
-	                    timeLeft--;
-	                    timerLabel.setText("Time left: " + timeLeft + "s");
-	                } else {
-	                    timer.stop();
-	                    JOptionPane.showMessageDialog(null, "Time's up! Final Score: " + score);
-	                }
-	            }
-	        });
-	       timer.start();
-	       
-	    }
-	    public static void main(String[] args) {
-	    	SwingUtilities.invokeLater(new Runnable() {
-	            public void run() {
-	                //new TimerScoreboard().setVisible(true);
-	    }
-	    	
-	    });
-	    	
-	   } 
-	}
 //	   public void startTimer() {
 //	
 //		   System.out.println("Timer starting");
